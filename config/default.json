@@ -1,6 +1,0 @@
-{
-    "mongoURI":"mongodb+srv://manas123:Manas@123@cluster0.kmq3m.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "jwtSecret":"banchod",
-    "githubClientId":"d2e71f08a3892f6d86c2",
-    "githubSecret":"c1a1536339ba840a80f494852ab690aff923e822"
-}
