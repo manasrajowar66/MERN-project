@@ -112,7 +112,7 @@ router.put("/like/:id", auth, async (req, res) => {
     } else {
       post.likes.unshift({ user: req.user.id });
       await post.save();
-      res.send(post);
+      res.send(post.likes);
     }
   } catch (err) {
     console.error(err.message);
@@ -138,7 +138,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
         (like) => like.user.toString() !== req.user.id
       );
       await post.save();
-      res.send(post);
+      res.send(post.likes);
     }
   } catch (err) {
     console.error(err.message);
@@ -169,7 +169,7 @@ router.post(
         };
         post.comments.unshift(newCom);
         await post.save();
-        res.send(post);
+        res.send(post.comments);
       } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error.");
@@ -203,7 +203,7 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
             (comment) => comment.id !== req.params.comment_id
           );
           await post.save();
-          res.send(post);
+          res.send(post.comments);
         }
       }
     }

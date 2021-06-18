@@ -7,6 +7,7 @@ import {
   CLEAR_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  
 } from "./types";
 import { setAlert } from "./alert";
 import axios from "axios";
@@ -24,7 +25,7 @@ export const getCurrentUserProfile = () => {
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -60,7 +61,7 @@ export const createProfile = (formData, history, edit = false) => {
       }
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -92,7 +93,7 @@ export const addExperience = (formData, history) => {
       }
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -112,7 +113,7 @@ export const deleteExperience = (expId) => {
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -144,7 +145,7 @@ export const addEducation = (formData, history) => {
       }
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -164,7 +165,7 @@ export const deleteEducation = (eduId) => {
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -188,7 +189,7 @@ export const deleteAccount = () => {
         dispatch({
           type: PROFILE_ERROR,
           playload: {
-            msg: err.response.statusText,
+            msg: err.response ? err.response.statusText:'error undefined',
             status: err.response.status,
           },
         });
@@ -213,7 +214,7 @@ export const getProfiles = () => {
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -232,7 +233,7 @@ export const getProfileById = (userId) => {
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };
@@ -240,10 +241,10 @@ export const getProfileById = (userId) => {
 
 // Get users github repos
 
-export const getGithubRepos = (username) => {
+export const getGithubRepos = (gitHubUsername) => {
   return async (dispatch) => {
     try {
-      const res = await axios.get(`/api/profile/github/${username}`);
+      const res = await axios.get(`/api/profile/github/${gitHubUsername}`);
       dispatch({
         type: GET_REPOS,
         playload: res.data,
@@ -251,7 +252,7 @@ export const getGithubRepos = (username) => {
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
-        playload: { msg: err.response.statusText, status: err.response.status },
+        playload: { msg: err.response ? err.response.statusText:'error undefined', status: err.response.status },
       });
     }
   };

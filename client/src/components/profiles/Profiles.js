@@ -22,9 +22,10 @@ const Profiles = ({ profile: { profiles, loading }, getProfiles }) => {
         ) : (
           <>
             {" "}
-            {profiles.map((profile) => (
-              <ProfileItem profile={profile} key={profile._id} />
-            ))}
+            {profiles &&
+              profiles.map((profile, ind) => (
+                <ProfileItem profile={profile} key={ind} />
+              ))}
           </>
         )}
       </section>

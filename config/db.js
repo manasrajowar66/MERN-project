@@ -11,7 +11,6 @@ const connectDB = async () => {
       useCreateIndex: true,
       useFindAndModify: false,
     });
-    console.log("mongoDB connected...");
   } catch (error) {
     console.log(error.message);
     //exit with faliure
