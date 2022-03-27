@@ -1,0 +1,16 @@
+.footer {
+  width: 100%;
+  background-color: #3a3845;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: white;
+  position: absolute;
+  bottom: 0px;
+}
+
+/* .footer div {
+  display: inline-block;
+} */
